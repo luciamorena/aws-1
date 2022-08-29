@@ -7,7 +7,7 @@ app.use('/site', require('express').static('site'));
 
 app.get('/',(req,res)=>{
     res.status(200).json({
-        msg:'API - 1.0.0',
+        msg:'API - 2.0.0',
         os:os.hostname(),
         valor:Math.random()
     })
