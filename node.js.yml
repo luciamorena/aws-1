@@ -1,0 +1,75 @@
+name: CI ENVIROMENTS
+
+on:
+  push:
+    branches: ["*"]
+
+jobs:
+  master:
+    # if: false 
+    # if: ${{ false }}
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    # - run: npm ci
+    # - run: npm run test
+    - run: echo 'RUN MASTER'
+
+  backend:
+    # if: false
+    # if: ${{ false }}
+    # if: success()
+    runs-on: ubuntu-latest
+    # environment:
+      # name: dev
+      # url: 'https://meuguia.tv'
+    needs: master
+    steps:
+      - name: RUN BACKEND
+        # run: echo 'RUN BACKEND'
+        run: exit 1
+
+  frontend:
+    if: false
+    # if: ${{ false }}
+    runs-on: ubuntu-latest
+    # environment:
+      # name: dev
+      # url: 'https://meuguia.tv'
+    needs: backend
+    steps:
+      - name: RUN FRONTEND
+        run: echo 'RUN FRONTEND'
+
+  mobile:
+    # if: false
+    # if: ${{ false }}
+    runs-on: ubuntu-latest
+    # environment:
+      # name: dev
+      # url: 'https://meuguia.tv'
+    needs: frontend
+    steps:
+      - name: RUN MOBILE
+        run: echo 'RUN MOBILE'
+
+  fim:
+    runs-on: ubuntu-latest
+    needs: mobile
+    steps:
+      - name: RUN FIM
+        run: |
+          echo 'RUN FIM 1'
+          echo 'RUN FIM 2'
+          echo 'RUN FIM 3'
+          echo 'RUN FIM 4'
+          echo 'RUN FIM 5'
