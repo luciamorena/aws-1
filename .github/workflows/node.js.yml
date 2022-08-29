@@ -29,3 +29,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - run: /
+      echo 'TESTE 1'
+      echo 'TESTE 2'
+      echo 'TESTE 3'
