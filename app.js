@@ -3,6 +3,8 @@ const app = require('express')()
 
 const port = process.env.PORT || 5000
 
+app.use('/site', require('express').static('site'));
+
 app.get('/',(req,res)=>{
     res.status(200).json({
         msg:'API - 1.0.0',
