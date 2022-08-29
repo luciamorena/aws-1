@@ -34,8 +34,8 @@ jobs:
     needs: master
     steps:
       - name: RUN BACKEND
-        run: echo 'RUN BACKEND'
-        run: exit 1
+        - run: echo 'RUN BACKEND'
+        - run: exit 1
 
   frontend:
     if: false
